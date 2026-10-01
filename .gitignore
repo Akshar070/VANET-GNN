@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.ipynb_checkpoints/
+.pytest_cache/
+models/*.pt
+models/*.pth
+logs/*
+data/interim/*.csv
+data/processed/*.csv
+data/processed/windows/*
+data/processed/graphs/*
+data/processed/features/*
+results/figures/*
+results/tables/*

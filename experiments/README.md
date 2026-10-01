@@ -1,0 +1,15 @@
+Suggested experiment IDs:
+
+exp01_data_audit
+exp02_kmeans
+exp03_spectral
+exp04_gae
+exp05_graphsage
+exp06_graphsage_window_5s
+exp07_graphsage_window_10s
+exp08_graphsage_window_20s
+exp09_graphsage_range_100m
+exp10_graphsage_range_200m
+exp11_graphsage_range_300m
+exp12_feature_ablation
+exp13_model_ablation

@@ -1,0 +1,77 @@
+seed: 42
+
+data:
+  mobility_path: data/raw/mobility.tcl
+  routes_path: data/raw/output.rou.xml
+  parsed_path: data/interim/mobility_parsed.csv
+  processed_path: data/processed/mobility_clean.csv
+
+window:
+  size_seconds: 10
+  step_seconds: 10
+
+graph:
+  method: distance_threshold
+  communication_range_m: 200
+  weighted_edges: false
+  self_loops: false
+
+features:
+  columns:
+    - x
+    - y
+    - speed
+
+clustering:
+  kmeans:
+    k: 5
+    random_state: 42
+    n_init: 20
+    max_iter: 300
+  spectral:
+    n_clusters: 5
+    random_state: 42
+    n_init: 20
+    assign_labels: kmeans
+  gae:
+    hidden_channels: 64
+    latent_channels: 16
+    learning_rate: 0.01
+    epochs: 200
+    weight_decay: 0.0001
+    dropout: 0.0
+    random_seed: 42
+    seed: 42
+    patience: 20
+    cluster_count: 5
+    n_init: 20
+    negative_sampling_ratio: 1.0
+    cpu_threads: auto
+    test_graphs: 1
+    test_epochs: 10
+    save_checkpoints: false
+  stable:
+    degree_weight: 0.30
+    centrality_weight: 0.25
+    stability_weight: 0.30
+    speed_penalty_weight: 0.15
+    k: 5
+    test_graphs: 5
+  scaling:
+    method: standard
+  k_selection:
+    enabled: true
+    min_k: 2
+    max_k: 10
+
+models:
+  graphsage:
+    hidden_dim: 64
+    embedding_dim: 32
+    dropout: 0.20
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    epochs: 200
+
+evaluation:
+  repeats: 5
